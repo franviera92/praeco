@@ -2,7 +2,9 @@ version: '3'
 
 services:
   elastalert:
-    image: 'servercentral/elastalert'
+    build:
+      context: elasalert/
+    container_name: elasalert
 
     ports:
       - '3030:3030'
@@ -18,7 +20,9 @@ services:
       - 'elasticsearch:${PRAECO_ELASTICSEARCH}'
 
   webapp:
-    image: 'servercentral/praeco'
+    build:
+      context: webapp/
+    container_name: webapp
 
     ports:
       - '8080:8080'
