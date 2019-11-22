@@ -1,0 +1,25 @@
+__praeco_full_path: Phishing
+alert:
+  - email
+alert_subject: Alert for Webfilter Phishing
+alert_subject_args: []
+email:
+  - soc@bigniss.cl
+filter:
+  - query:
+      query_string:
+        query: 'cat: 61'
+import: BaseRule.config
+index: fortinet-*
+is_enabled: false
+name: Phishing
+num_events: 2
+realert:
+  seconds: 1
+terms_size: 50
+timeframe:
+  minutes: 5
+timestamp_field: '@timestamp'
+timestamp_type: iso
+type: frequency
+use_strftime_index: false

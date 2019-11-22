@@ -1,0 +1,41 @@
+aggregation:
+  schedule: '* * * * *'
+aggregation_key: user
+alert:
+  - email
+alert_subject: "Alerta por intento de acceso a web no autorizada -\_ Categoria: {0}"
+alert_subject_args:
+  - catdesc
+alert_text: >
+  Se realiza intento de acceso web a sitio {0} desde ip de origen {1}, se toma
+  acción {2} a sitio con categoria {3} con fecha: {4}.
+
+
+  User: {5}
+alert_text_args:
+  - hostname
+  - srcip
+  - action
+  - catdesc
+  - '@timestamp'
+  - user
+email:
+  - soc@bigniss.cl
+filter:
+  - query:
+      query_string:
+        query: 'cat: 61'
+import: BaseRule.config
+index: fortinet-*
+is_enabled: true
+name: Phishing_2
+num_events: 1
+realert:
+  minutes: 0
+terms_size: 50
+timeframe:
+  minutes: 5
+timestamp_field: '@timestamp'
+timestamp_type: iso
+type: frequency
+use_strftime_index: false

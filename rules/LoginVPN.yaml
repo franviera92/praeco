@@ -1,0 +1,32 @@
+__praeco_query_builder: >-
+  {"query":{"logicalOperator":"all","children":[{"type":"query-builder-rule","query":{"rule":"logid","selectedOperator":"contains","selectedOperand":"logid","value":"0101039426"}}]}}
+alert:
+  - email
+alert_subject: Alert for Login Failed VPN
+alert_subject_args: []
+alert_text: |
+  Alert for Login Failed VPN
+
+  User: {0}
+alert_text_args:
+  - user
+email:
+  - soc@bigniss.cl
+filter:
+  - query:
+      query_string:
+        query: 'logid:0101039426'
+import: BaseRule.config
+index: fortinet-*
+is_enabled: true
+name: LoginVPN
+num_events: 3
+realert:
+  minutes: 5
+terms_size: 50
+timeframe:
+  minutes: 5
+timestamp_field: '@timestamp'
+timestamp_type: iso
+type: frequency
+use_strftime_index: false

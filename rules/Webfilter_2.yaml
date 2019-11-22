@@ -1,0 +1,35 @@
+__praeco_full_path: Webfilter_2
+__praeco_query_builder: >-
+  {"query":{"logicalOperator":"all","children":[{"type":"query-builder-rule","query":{"rule":"subtype","selectedOperator":"contains","selectedOperand":"subtype","value":"webfilter"}},{"type":"query-builder-rule","query":{"rule":"action","selectedOperator":"contains","selectedOperand":"action","value":"blocked"}}]}}
+aggregation:
+  schedule: '* * * * *'
+aggregation_key: srcip
+alert:
+  - email
+alert_subject: Alert Webfilter User
+alert_subject_args: []
+alert_text: "\nHostname: {0}\n\nUser: {1}\_ \n\nIP: {2}\n\n"
+alert_text_args:
+  - hostname
+  - user
+  - srcip
+email:
+  - soc@bigniss.cl
+filter:
+  - query:
+      query_string:
+        query: 'subtype:webfilter AND action:blocked'
+import: BaseRule.config
+index: fortinet-*
+is_enabled: false
+name: Webfilter_2
+num_events: 5
+realert:
+  minutes: 0
+terms_size: 50
+timeframe:
+  minutes: 5
+timestamp_field: '@timestamp'
+timestamp_type: iso
+type: frequency
+use_strftime_index: false

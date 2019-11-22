@@ -1,0 +1,33 @@
+__praeco_query_builder: >-
+  {"query":{"logicalOperator":"all","children":[{"type":"query-builder-rule","query":{"rule":"logid","selectedOperator":"contains","selectedOperand":"logid","value":"0720018432"}}]}}
+alert:
+  - email
+alert_subject: Alert for Anomaly
+alert_subject_args: []
+alert_text: |
+  Alerta por {0} de nivel {1} con severidad {2} desde el origen {3}
+alert_text_args:
+  - subtype
+  - level
+  - severity
+  - srcip
+email:
+  - soc@bigniss.cl
+filter:
+  - query:
+      query_string:
+        query: 'logid:0720018432'
+import: BaseRule.config
+index: fortinet-*
+is_enabled: true
+name: Anomaly
+num_events: 1
+realert:
+  minutes: 5
+terms_size: 50
+timeframe:
+  minutes: 1
+timestamp_field: '@timestamp'
+timestamp_type: iso
+type: frequency
+use_strftime_index: false

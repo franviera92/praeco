@@ -1,0 +1,27 @@
+__praeco_query_builder: >-
+  {"query":{"logicalOperator":"all","children":[{"type":"query-builder-rule","query":{"rule":"subtype","selectedOperator":"contains","selectedOperand":"subtype","value":"ips"}},{"type":"query-builder-rule","query":{"rule":"action","selectedOperator":"contains","selectedOperand":"action","value":"dropped"}}]}}
+alert:
+  - email
+alert_subject: Alert IPS Blocked
+alert_subject_args: []
+email:
+  - soc@bigniss.cl
+filter:
+  - query:
+      query_string:
+        query: 'subtype:ips AND action:dropped'
+import: BaseRule.config
+index: fortinet-*
+is_enabled: true
+name: IPS Blocked
+num_events: 3
+query_key: subject.keyword
+realert:
+  minutes: 30
+terms_size: 50
+timeframe:
+  minutes: 30
+timestamp_field: '@timestamp'
+timestamp_type: iso
+type: frequency
+use_strftime_index: false

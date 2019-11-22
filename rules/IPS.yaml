@@ -1,0 +1,54 @@
+__praeco_query_builder: >-
+  {"query":{"logicalOperator":"all","children":[{"type":"query-builder-rule","query":{"rule":"subtype","selectedOperator":"contains","selectedOperand":"subtype","value":"ips"}}]}}
+aggregation:
+  schedule: '* * * * *'
+aggregation_key: srcip
+alert:
+  - email
+alert_subject: 'Alert Attack Ips: {0}'
+alert_subject_args:
+  - attack
+alert_text: >-
+  Alerta de ataque "{0}" del tipo "{1}" de nivel "{2}" de severidad "{3}" desde
+  el origen "{4}" hacia el destino "{5}:{6}".
+
+
+
+
+  Equipo realiza la siguiente acción: {7}
+
+
+
+
+  Detalles:
+alert_text_args:
+  - attack
+  - subtype
+  - level
+  - severity
+  - srcip
+  - dstip
+  - dstport
+  - action
+alert_text_type: exclude_fields
+email:
+  - soc@bigniss.cl
+filter:
+  - query:
+      query_string:
+        query: 'subtype:ips'
+import: BaseRule.config
+index: fortinet-*
+is_enabled: true
+name: IPS
+num_events: 3
+query_key: subtype.keyword
+realert:
+  minutes: 0
+terms_size: 50
+timeframe:
+  minutes: 5
+timestamp_field: '@timestamp'
+timestamp_type: iso
+type: frequency
+use_strftime_index: false
