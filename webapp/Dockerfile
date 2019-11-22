@@ -1,7 +1,7 @@
 
 
 # https://github.com/elastic/elasticsearch-docker
-FROM servercentral/elastalert
+FROM servercentral/praeco
 
 RUN apt-get update -y
 RUN apt-get install nano -y
