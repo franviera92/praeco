@@ -50,4 +50,4 @@ alert_time_limit:
   days: 2
 
 skip_invalid: True
-use_local_time: true
+use_local_time: True

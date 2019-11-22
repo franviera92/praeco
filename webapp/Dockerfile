@@ -7,6 +7,7 @@ RUN apt-get update -y
 RUN apt-get install nano -y
 RUN unlink /etc/localtime 
 RUN ln -s /usr/share/zoneinfo/America/Santiago /etc/localtime
+RUN PRAECO_ELASTICSEARCH=10.10.10.122
 
 # Add your elasticsearch plugins setup here
 # Example: RUN elasticsearch-plugin install analysis-icu
