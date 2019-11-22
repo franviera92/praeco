@@ -19,5 +19,6 @@
   "es_username": "elastic",
   "es_password": "0stErgacgRh7yjWCKC3H",
   "es_ssl": false,
-  "writeback_index": "praeco_elastalert_status"
+  "writeback_index": "praeco_elastalert_status",
+  "use_local_time": true
 }
