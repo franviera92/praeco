@@ -31,5 +31,6 @@ timeframe:
   minutes: 5
 timestamp_field: '@timestamp'
 timestamp_type: iso
+use_local_time: true
 type: frequency
 use_strftime_index: false

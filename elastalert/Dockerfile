@@ -3,6 +3,7 @@
 # https://github.com/elastic/elasticsearch-docker
 FROM servercentral/elastalert
 
+ENV TZ=America/Santiago
 #RUN apt-get update -y
 #RUN apt-get install nano -y
 
