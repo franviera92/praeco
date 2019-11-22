@@ -3,8 +3,8 @@ version: '3'
 services:
   elastalert:
     build:
-      context: elasalert/
-    container_name: elasalert
+      context: elastalert/
+    container_name: elastalert
 
     ports:
       - '3030:3030'
